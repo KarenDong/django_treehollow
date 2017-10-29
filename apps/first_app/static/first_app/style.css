@@ -1,0 +1,79 @@
+body{
+  background-color: #000000;
+  margin:0;
+  padding:0;
+  color: #D0F5A9;
+}
+
+h1,h2,h3{
+  color:#D0F5A9;
+  font-family: Abraham Lincoln, Century Gothic;
+}
+h1{
+  font-size:80px;
+  margin-top: 200px;
+}
+h2{
+  font-size: 50px;
+  margin-top: 50px;
+}
+h3{
+  font-size: 30px;
+  margin-top: 20px;
+}
+.icon{
+  width: 50px;
+  margin-left: 0 auto;
+  margin-right: 0 auto;
+  margin-top: 20px;
+}
+
+li,ul{
+  margin-left: 150px;
+  margin-right: 150px;
+  text-align: center;
+  font-size: 15px;
+  display: inline;
+  color: #fff;
+}
+
+p{
+   font-family: Abraham Lincoln, Century Gothic;
+   text-align:justify;
+   text-align-last:left;
+   width: 1000px;
+   margin: 0 auto;
+   line-height: 20pt;
+   font-size: 18px;
+}
+
+form{
+  width: 300px;
+  border: 1px #9cea48 solid;
+  margin: 0 auto;
+  padding: 10px;
+}
+label{
+  display: block;
+}
+li{
+  color: #D0F5A9;
+}
+
+#register{
+  margin-top: 800px;
+  padding: 50px;
+}
+
+#login{
+  margin-top: 200px;
+  margin-bottom: 200px;
+  padding-bottom: 50px;
+}
+
+.home{
+  width: 50px;
+  margin-left: 0 auto;
+  margin-right: 0 auto;
+  margin-top: 100px;
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Tree Hollow - Hollow Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'first_app/substyle.css' %}">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="{% static 'first_app/skroll.js' %}"></script>
+  </head>
+  <body>
+    <main>
+      <div id="header">
+        <span><a href="/hollow">Back</a></span>
+        <span><a href="/logout">Logout</a></span>
+      </div>
+      <div id="userinfo">
+        <h2>{{hollow.topic}}</h2>
+        <p>{{hollow.created_at}}</p>
+        <p>{{hollow.content}}</p>
+        <center><button type="button" name="button"><a href="/remove/{{hollow.id}}">Delete the record</a></button></center>
+      </div>
+    </main>
+  </body>
+</html>

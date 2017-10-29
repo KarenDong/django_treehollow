@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Tree Hollow - Home Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'first_app/substyle.css' %}">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <main>
+      <div id="header">
+        <span><a href="/users/{{me.id}}">Profile</a></span>
+        <span><a href="/logout">Logout</a></span>
+      </div>
+      <div id="new_hollow">
+        <h2>Welcome back, {{me.alias}}!</h2>
+        <ul class="messages">
+        {% if messages %}
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        {% endif %}
+        </ul>
+        <form class="" action="/add" method="post">
+          {% csrf_token %}
+          <label for="topic">Give the secret post a title:</label>
+          <input type="text" name="topic" value="">
+          <br>
+          <label for="content">Keep your secret here:</label>
+          <input type="text" name="content" value="">
+          <br><br>
+          <input type="submit" value="Post it!">
+        </form>
+        <center><h3>Skroll down to take a look back!</h3></center>
+        {% load static %}
+        <center><a href="#old_hollow"><img class="icon" src="{% static "first_app/arrow.png" %}" alt="arrow"></a></center>
+      </div>
+      <div id="old_hollow">
+        {% if hollows %}
+        <h2>Here is the list of your existing hollows:</h2>
+        {% else %}
+        <h2>You don't have any hollows yet.</h2>
+        {% endif %}
+        <table>
+          <thead>
+            <th>Topic</th>
+            <th>Action</th>
+          </thead>
+          {% for hollow in hollows %}
+          <tr>
+            <td>{{hollow.topic}}</td>
+            <td>
+              <a href="/hollow/{{hollow.id}}">View Details</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </main>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $('a[href*="#"]')
+      // Remove links that don't actually link to anything
+      .not('[href="#"]')
+      .not('[href="#0"]')
+      .click(function(event) {
+        // On-page links
+        if (
+          location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
+          &&
+          location.hostname == this.hostname
+        ) {
+          // Figure out element to scroll to
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+          // Does a scroll target exist?
+          if (target.length) {
+            // Only prevent default if animation is actually gonna happen
+            event.preventDefault();
+            $('html, body').animate({
+              scrollTop: target.offset().top
+            }, 1000, function() {
+              // Callback after animation
+              // Must change focus!
+              var $target = $(target);
+              $target.focus();
+              if ($target.is(":focus")) { // Checking if the target was focused
+                return false;
+              } else {
+                $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+                $target.focus(); // Set focus again
+              };
+            });
+          }
+        }
+      });
+      });
+    </script>
+  </body>
+</html>
